@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox fx:id="vbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="400.0"
+      style="-fx-background-color: #FF7082;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mia.apa.ProductsSectionController">
+   <Label text="In case of any issues:" wrapText="true">
+      <font>
+         <Font name="Aparajita Bold Italic" size="25.0" />
+      </font>
+      <VBox.margin>
+         <Insets bottom="10.0" left="20.0" right="10.0" top="10.0"/>
+      </VBox.margin>
+   </Label>
+   <Label layoutX="30.0" layoutY="20.0" text="Call +254792672013 or Email us at mustapher1997@gmail.com"
+          wrapText="true">
+      <font>
+         <Font name="Aparajita Bold Italic" size="25.0" />
+      </font>
+      <VBox.margin>
+         <Insets bottom="10.0" left="20.0" right="10.0"/>
+      </VBox.margin>
+   </Label>
+</VBox>

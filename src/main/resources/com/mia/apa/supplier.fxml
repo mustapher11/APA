@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="vbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="730.0" prefWidth="1200.0" spacing="10.0" style="-fx-background-color: linear-gradient(to right, #EE9CA7, #FFDDE1);" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.mia.apa.SupplierController">
+    <Label text="Supplier Section">
+        <font>
+            <Font name="System Bold" size="27.0" />
+        </font>
+        <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+        </VBox.margin>
+    </Label>
+    <HBox prefWidth="200.0" spacing="20.0">
+        <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+        </padding>
+        <Label text="Company Name">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+            <HBox.margin>
+                <Insets left="10.0" top="5.0" />
+            </HBox.margin>
+        </Label>
+        <TextField prefHeight="32.0" prefWidth="230.0">
+            <HBox.margin>
+                <Insets left="30.0" />
+            </HBox.margin>
+        </TextField>
+        <Region HBox.hgrow="ALWAYS" />
+        <Label text="Address">
+            <HBox.margin>
+                <Insets top="5.0" />
+            </HBox.margin>
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+        </Label>
+        <TextField prefHeight="32.0" prefWidth="230.0" />
+        <Region HBox.hgrow="ALWAYS" />
+        <Label text="Email">
+            <HBox.margin>
+                <Insets left="20.0" top="5.0" />
+            </HBox.margin>
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+        </Label>
+        <TextField prefHeight="32.0" prefWidth="230.0">
+            <HBox.margin>
+                <Insets left="10.0" />
+            </HBox.margin>
+        </TextField>
+    </HBox>
+    <HBox layoutX="10.0" layoutY="79.0" prefWidth="200.0" spacing="20.0">
+        <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+        </padding>
+        <Label text="Phone Number">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+            <HBox.margin>
+                <Insets left="15.0" top="5.0" />
+            </HBox.margin>
+        </Label>
+        <TextField prefHeight="32.0" prefWidth="230.0">
+            <HBox.margin>
+                <Insets left="32.0" />
+            </HBox.margin>
+        </TextField>
+        <Region maxWidth="-Infinity" prefHeight="32.0" prefWidth="50.0" HBox.hgrow="ALWAYS" />
+      <Region HBox.hgrow="ALWAYS" />
+    </HBox>
+    <HBox maxWidth="1.7976931348623157E308" spacing="20.0">
+        <padding>
+            <Insets left="10.0" right="10.0" />
+        </padding>
+        <Label text="Search">
+            <HBox.margin>
+                <Insets top="10.0" />
+            </HBox.margin>
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+        </Label>
+        <TextField prefHeight="34.0" prefWidth="352.0">
+            <HBox.margin>
+                <Insets top="5.0" />
+            </HBox.margin>
+        </TextField>
+        <Region HBox.hgrow="ALWAYS" />
+        <VBox.margin>
+            <Insets left="10.0" right="10.0" top="20.0" />
+        </VBox.margin>
+    </HBox>
+    <TableView prefHeight="366.0" prefWidth="1180.0">
+        <columns>
+            <TableColumn prefWidth="67.0" text="No." />
+            <TableColumn prefWidth="147.0" text="Company Name" />
+            <TableColumn prefWidth="75.0" text="Company Address" />
+            <TableColumn prefWidth="75.0" text="Company Email" />
+            <TableColumn prefWidth="75.0" text="Company Phone Number" />
+            <TableColumn prefWidth="75.0" text="Cashier" />
+        </columns>
+        <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+        </VBox.margin>
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+        </columnResizePolicy>
+    </TableView>
+    <HBox alignment="TOP_CENTER" prefWidth="200.0" spacing="20.0">
+        <padding>
+            <Insets left="10.0" right="10.0" />
+        </padding>
+        <Button fx:id="supplierList" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Supplier List">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+        </Button>
+        <Button fx:id="refresh" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Refresh">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+        </Button>
+        <Button fx:id="save" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Save">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+        </Button>
+        <Button fx:id="update" graphicTextGap="10.0" layoutX="880.0" layoutY="20.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Update">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+        </Button>
+        <Button fx:id="clear" graphicTextGap="10.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Clear">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+        </Button>
+        <Button fx:id="delete" graphicTextGap="10.0" layoutX="690.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Delete">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+        </Button>
+        <Button fx:id="exit" onAction="#exitSupplierSection" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Exit">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+        </Button>
+        <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" />
+        </VBox.margin>
+    </HBox>
+</VBox>

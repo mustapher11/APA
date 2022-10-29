@@ -1,0 +1,28 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="demo:jar2">
+    <output-path>$PROJECT_DIR$/out/artifacts/demo_jar2</output-path>
+    <root id="archive" name="demo_jar2.jar">
+      <element id="archive" name="demo.jar">
+        <element id="module-output" name="demo" />
+      </element>
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-controls:18.0.1" />
+      <element id="library" level="project" name="Maven: org.junit.platform:junit-platform-commons:1.8.2" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-base:win:18.0.1" />
+      <element id="library" level="project" name="Maven: org.opentest4j:opentest4j:1.2.0" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-base:18.0.1" />
+      <element id="library" level="project" name="Maven: org.junit.jupiter:junit-jupiter-api:5.8.2" />
+      <element id="library" level="project" name="Maven: org.junit.platform:junit-platform-engine:1.8.2" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-fxml:18.0.1" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-controls:win:18.0.1" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-graphics:win:18.0.1" />
+      <element id="library" level="project" name="Maven: mysql:mysql-connector-java:8.0.30" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-graphics:18.0.1" />
+      <element id="library" level="project" name="Maven: org.junit.jupiter:junit-jupiter-engine:5.8.2" />
+      <element id="library" level="project" name="lib" />
+      <element id="library" level="project" name="Maven: com.google.protobuf:protobuf-java:3.19.4" />
+      <element id="library" level="project" name="Maven: org.apiguardian:apiguardian-api:1.1.2" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-fxml:win:18.0.1" />
+      <element id="library" level="project" name="Maven: org.controlsfx:controlsfx:11.1.1" />
+    </root>
+  </artifact>
+</component>

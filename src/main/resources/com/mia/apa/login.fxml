@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<VBox fx:id="vbox" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" spacing="20.0" style="-fx-background-color: linear-gradient(to right, #EE9CA7, #FFDDE1);" xmlns="http://javafx.com/javafx/18"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mia.apa.LogInController">
+    <Label text="CASHIER SECTION" textAlignment="CENTER" textFill="#000000">
+        <VBox.margin>
+            <Insets top="20.0" />
+        </VBox.margin>
+        <font>
+            <Font name="System Bold Italic" size="40.0" />
+        </font>
+    </Label>
+    <Label alignment="TOP_CENTER" text="LOG IN" textFill="#000" VBox.vgrow="ALWAYS">
+        <VBox.margin>
+            <Insets top="20.0" />
+        </VBox.margin>
+        <font>
+            <Font name="Aparajita Bold Italic" size="30.0" />
+        </font>
+    </Label>
+    <TextField fx:id="id" prefHeight="40.0" promptText="ID Number" VBox.vgrow="ALWAYS">
+        <VBox.margin>
+            <Insets left="10.0" right="10.0" />
+        </VBox.margin>
+        <font>
+            <Font size="15.0" />
+        </font>
+    </TextField>
+    <PasswordField fx:id="password" layoutX="10.0" layoutY="52.0" prefHeight="40.0" promptText="Password">
+        <VBox.margin>
+            <Insets left="10.0" right="10.0" />
+        </VBox.margin>
+        <font>
+            <Font size="15.0" />
+        </font>
+    </PasswordField>
+    <SplitMenuButton onAction="#logIn" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="LOG IN" VBox.vgrow="ALWAYS">
+        <items>
+            <MenuItem fx:id="resetPassword" mnemonicParsing="false" text="RESET PASSWORD" onAction="#passwordReset"/>
+        </items>
+        <font>
+            <Font name="Aparajita Bold Italic" size="15" />
+        </font>
+        <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="20.0" top="10.0" />
+        </VBox.margin>
+        <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="20.0" top="10.0" />
+        </VBox.margin>
+    </SplitMenuButton>
+    <Label text="Not yet registered? Register here" onMouseClicked="#moveToRegister">
+        <font>
+            <Font name="System Bold Italic" size="17.0" />
+        </font>
+        <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+        </padding>
+    </Label>
+</VBox>

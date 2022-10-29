@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Main-Class: com.mia.apa.Main
+Class-Path: javafx-controls-18.0.1.jar junit-platform-commons-1.8.2.jar 
+ javafx-base-18.0.1-win.jar opentest4j-1.2.0.jar javafx-base-18.0.1.jar 
+ junit-jupiter-api-5.8.2.jar junit-platform-engine-1.8.2.jar javafx-fxml
+ -18.0.1.jar javafx-controls-18.0.1-win.jar javafx-graphics-18.0.1-win.j
+ ar mysql-connector-java-8.0.30.jar javafx-graphics-18.0.1.jar junit-jup
+ iter-engine-5.8.2.jar javafx-swt.jar javafx.web.jar javafx.base.jar jav
+ afx.fxml.jar javafx.media.jar javafx.swing.jar javafx.controls.jar java
+ fx.graphics.jar protobuf-java-3.19.4.jar apiguardian-api-1.1.2.jar java
+ fx-fxml-18.0.1-win.jar controlsfx-11.1.1.jar
+

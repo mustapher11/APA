@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1300.0" style="-fx-background-color: linear-gradient(to right, #EE9CA7, #FFDDE1);" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mia.apa.ProductsSectionController1">
+   <top>
+      <HBox prefHeight="380.0" prefWidth="1300.0" BorderPane.alignment="CENTER">
+         <VBox prefHeight="372.0" prefWidth="334.0">
+            <Label alignment="TOP_CENTER" text="Select Item" wrapText="true" VBox.vgrow="ALWAYS">
+               <font>
+                  <Font name="System Bold" size="27.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <HBox layoutX="10.0" layoutY="74.0" maxWidth="350.0" prefWidth="200.0" spacing="10.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <Label text="Select Table">
+                  <font>
+                     <Font name="System Bold" size="15.0" />
+                  </font>
+               </Label>
+               <ComboBox layoutX="10.0" layoutY="100.0" prefWidth="200.0" />
+            </HBox>
+            <HBox layoutX="10.0" layoutY="49.0" maxWidth="350.0" prefWidth="150.0" spacing="10.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <Label text="Food/Drink">
+                  <font>
+                     <Font name="System Bold" size="15.0" />
+                  </font>
+               </Label>
+               <ComboBox prefWidth="200.0">
+                  <HBox.margin>
+                     <Insets left="5.0" />
+                  </HBox.margin>
+               </ComboBox>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="74.0" maxWidth="350.0" prefWidth="150.0" spacing="10.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <Label text="Category">
+                  <font>
+                     <Font name="System Bold" size="15.0" />
+                  </font>
+               </Label>
+               <ComboBox prefWidth="200.0">
+                  <HBox.margin>
+                     <Insets left="22.0" />
+                  </HBox.margin>
+               </ComboBox>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="99.0" maxWidth="350.0" prefWidth="150.0" spacing="10.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <Label text="Type">
+                  <font>
+                     <Font name="System Bold" size="18.0" />
+                  </font>
+               </Label>
+               <ComboBox prefWidth="200.0">
+                  <HBox.margin>
+                     <Insets left="44.0" />
+                  </HBox.margin>
+               </ComboBox>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="124.0" maxWidth="350.0" prefWidth="150.0" spacing="10.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <Label text="Unit Cost">
+                  <font>
+                     <Font name="System Bold" size="15.0" />
+                  </font>
+               </Label>
+               <TextField prefWidth="200.0">
+                  <HBox.margin>
+                     <Insets left="20.0" />
+                  </HBox.margin>
+               </TextField>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="149.0" maxWidth="350.0" prefWidth="150.0" spacing="10.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <Label text="Quantity">
+                  <font>
+                     <Font name="System Bold" size="15.0" />
+                  </font>
+               </Label>
+               <TextField prefWidth="200.0">
+                  <HBox.margin>
+                     <Insets left="25.0" />
+                  </HBox.margin>
+               </TextField>
+            </HBox>
+            <HBox layoutX="20.0" layoutY="284.0" maxWidth="350.0" prefWidth="150.0" spacing="10.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <Label text="Total Cost">
+                  <font>
+                     <Font name="System Bold" size="15.0" />
+                  </font>
+               </Label>
+               <TextField prefWidth="200.0">
+                  <HBox.margin>
+                     <Insets left="15.0" />
+                  </HBox.margin>
+               </TextField>
+            </HBox>
+            <HBox.margin>
+               <Insets left="10.0" />
+            </HBox.margin>
+         </VBox>
+         <VBox prefHeight="377.0" prefWidth="288.0">
+            <Label text="KeyPad">
+               <VBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="27.0" />
+               </font>
+            </Label>
+            <HBox prefWidth="200.0" spacing="10.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <Button contentDisplay="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="70.0" text="1">
+                  <font>
+                     <Font name="System Bold" size="20.0" />
+                  </font>
+               </Button>
+               <Button contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="70.0" text="2">
+                  <font>
+                     <Font name="System Bold" size="20.0" />
+                  </font>
+               </Button>
+               <Button contentDisplay="CENTER" layoutX="62.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="70.0" text="3" wrapText="true">
+                  <font>
+                     <Font name="System Bold" size="20.0" />
+                  </font>
+               </Button>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="37.0" prefWidth="200.0" spacing="10.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <Button contentDisplay="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="70.0" text="4">
+                  <font>
+                     <Font name="System Bold" size="20.0" />
+                  </font>
+               </Button>
+               <Button contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="70.0" text="5">
+                  <font>
+                     <Font name="System Bold" size="20.0" />
+                  </font>
+               </Button>
+               <Button contentDisplay="CENTER" layoutX="62.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="70.0" text="6">
+                  <font>
+                     <Font name="System Bold" size="20.0" />
+                  </font>
+               </Button>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="62.0" prefWidth="200.0" spacing="10.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <Button contentDisplay="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="70.0" text="7">
+                  <font>
+                     <Font name="System Bold" size="20.0" />
+                  </font>
+               </Button>
+               <Button contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="70.0" text="8">
+                  <font>
+                     <Font name="System Bold" size="20.0" />
+                  </font>
+               </Button>
+               <Button contentDisplay="CENTER" layoutX="62.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="70.0" text="9">
+                  <font>
+                     <Font name="System Bold" size="20.0" />
+                  </font>
+               </Button>
+            </HBox>
+            <HBox layoutX="20.0" layoutY="187.0" prefWidth="200.0" spacing="10.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <Button contentDisplay="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="70.0" text="+">
+                  <font>
+                     <Font name="System Bold" size="20.0" />
+                  </font>
+               </Button>
+               <Button contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="70.0" text="0">
+                  <font>
+                     <Font name="System Bold" size="20.0" />
+                  </font>
+               </Button>
+               <Button contentDisplay="CENTER" layoutX="62.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="70.0" text="CLR">
+                  <font>
+                     <Font name="System Bold" size="20.0" />
+                  </font>
+               </Button>
+            </HBox>
+            <Button alignment="CENTER" contentDisplay="TEXT_ONLY" mnemonicParsing="false" prefHeight="50.0" prefWidth="235.0" text="Balance" VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Button>
+            <HBox.margin>
+               <Insets left="10.0" />
+            </HBox.margin>
+         </VBox>
+         <VBox prefHeight="372.0" prefWidth="366.0">
+            <Label alignment="TOP_CENTER" text="Payment Section" wrapText="true" VBox.vgrow="ALWAYS">
+               <font>
+                  <Font name="System Bold" size="27.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <HBox layoutX="10.0" layoutY="74.0" maxWidth="350.0" prefWidth="200.0" spacing="10.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <Label text="Payment Method">
+                  <font>
+                     <Font name="System Bold" size="15.0" />
+                  </font>
+               </Label>
+               <ComboBox layoutX="10.0" layoutY="100.0" prefWidth="200.0" />
+            </HBox>
+            <HBox layoutX="10.0" layoutY="49.0" maxWidth="350.0" prefWidth="150.0" spacing="10.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <Label text="Amount Payable">
+                  <font>
+                     <Font name="System Bold" size="15.0" />
+                  </font>
+               </Label>
+               <TextField prefWidth="200.0">
+                  <HBox.margin>
+                     <Insets left="8.0" />
+                  </HBox.margin>
+               </TextField>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="74.0" maxWidth="350.0" prefWidth="150.0" spacing="10.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <Label text="Amount Paid">
+                  <font>
+                     <Font name="System Bold" size="15.0" />
+                  </font>
+               </Label>
+               <TextField prefWidth="200.0">
+                  <HBox.margin>
+                     <Insets left="30.0" />
+                  </HBox.margin>
+               </TextField>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="99.0" maxWidth="350.0" prefWidth="150.0" spacing="10.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <Label text="Balance">
+                  <font>
+                     <Font name="System Bold" size="18.0" />
+                  </font>
+               </Label>
+               <TextField prefWidth="205.0">
+                  <HBox.margin>
+                     <Insets left="55.0" />
+                  </HBox.margin>
+               </TextField>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="124.0" maxWidth="350.0" prefWidth="150.0" spacing="10.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <Label text="Mpesa Code">
+                  <font>
+                     <Font name="System Bold" size="15.0" />
+                  </font>
+               </Label>
+               <TextField prefWidth="205.0">
+                  <HBox.margin>
+                     <Insets left="35.0" />
+                  </HBox.margin>
+               </TextField>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="149.0" maxWidth="350.0" prefWidth="150.0" spacing="10.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <Label text="Date">
+                  <font>
+                     <Font name="System Bold" size="15.0" />
+                  </font>
+               </Label>
+               <TextField prefWidth="207.0">
+                  <HBox.margin>
+                     <Insets left="85.0" />
+                  </HBox.margin>
+               </TextField>
+            </HBox>
+            <HBox layoutX="20.0" layoutY="284.0" maxWidth="350.0" prefWidth="150.0" spacing="10.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <Label text="Time">
+                  <font>
+                     <Font name="System Bold" size="15.0" />
+                  </font>
+               </Label>
+               <TextField prefWidth="205.0">
+                  <HBox.margin>
+                     <Insets left="85.0" />
+                  </HBox.margin>
+               </TextField>
+            </HBox>
+            <HBox.margin>
+               <Insets left="10.0" />
+            </HBox.margin>
+         </VBox>
+         <VBox prefHeight="372.0" prefWidth="256.0">
+            <Label text="Controls">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="20.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="27.0" />
+               </font>
+            </Label>
+            <Button fx:id="addQueue" graphicTextGap="30.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="Add Queue">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="20.0" right="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="clearQueue" graphicTextGap="30.0" layoutX="10.0" layoutY="69.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="Clear Queue">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="20.0" right="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="clearPayment" graphicTextGap="14.0" layoutX="10.0" layoutY="94.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="Clear Payment">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="20.0" right="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="generateReceipt" layoutX="10.0" layoutY="119.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="Generate Receipt">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="20.0" right="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="printReceipt" graphicTextGap="20.0" layoutX="20.0" layoutY="174.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="Print Receipt">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="20.0" right="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <HBox.margin>
+               <Insets left="10.0" />
+            </HBox.margin>
+         </VBox>
+      </HBox>
+   </top>
+   <center>
+      <VBox alignment="TOP_CENTER" maxWidth="1000.0" prefHeight="408.0" prefWidth="975.0" BorderPane.alignment="TOP_LEFT">
+         <Label alignment="CENTER" text="View Purchased Items" VBox.vgrow="ALWAYS">
+            <VBox.margin>
+               <Insets top="20.0" />
+            </VBox.margin>
+            <font>
+               <Font name="System Bold" size="27.0" />
+            </font>
+         </Label>
+         <HBox prefHeight="35.0" prefWidth="1250.0">
+            <VBox.margin>
+               <Insets top="10.0" />
+            </VBox.margin>
+            <Label text="Search">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="20.0" right="10.0" top="10.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField prefWidth="300.0">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+            </TextField>
+         </HBox>
+         <TableView prefHeight="250.0" prefWidth="300.0">
+            <columns>
+               <TableColumn prefWidth="75.0" text="C1" />
+               <TableColumn prefWidth="75.0" text="C2" />
+               <TableColumn prefWidth="75.0" text="C2" />
+               <TableColumn prefWidth="75.0" text="C2" />
+               <TableColumn prefWidth="75.0" text="C2" />
+               <TableColumn prefWidth="75.0" text="C2" />
+               <TableColumn prefWidth="75.0" text="C2" />
+               <TableColumn prefWidth="75.0" text="C2" />
+               <TableColumn prefWidth="75.0" text="C2" />
+               <TableColumn prefWidth="75.0" text="C2" />
+               <TableColumn prefWidth="75.0" text="C2" />
+               <TableColumn prefWidth="75.0" text="C2" />
+               <TableColumn prefWidth="75.0" text="C2" />
+            </columns>
+            <VBox.margin>
+               <Insets bottom="20.0" left="10.0" right="20.0" />
+            </VBox.margin>
+         </TableView>
+      </VBox>
+   </center>
+   <right>
+      <VBox prefHeight="370.0" prefWidth="301.0" BorderPane.alignment="CENTER">
+         <Label text="Manage Orders">
+            <font>
+               <Font name="System Bold" size="27.0" />
+            </font>
+            <VBox.margin>
+               <Insets bottom="10.0" left="30.0" right="20.0" top="20.0" />
+            </VBox.margin>
+         </Label>
+         <Button fx:id="editRecord" graphicTextGap="30.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="Edit">
+            <VBox.margin>
+               <Insets bottom="10.0" left="30.0" right="10.0" top="10.0" />
+            </VBox.margin>
+            <font>
+               <Font name="System Bold" size="15.0" />
+            </font>
+            <padding>
+               <Insets right="30.0" />
+            </padding></Button>
+         <Button fx:id="view" graphicTextGap="30.0" layoutX="40.0" layoutY="89.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="View">
+            <font>
+               <Font name="System Bold" size="15.0" />
+            </font>
+            <padding>
+               <Insets right="30.0" />
+            </padding>
+            <VBox.margin>
+               <Insets bottom="10.0" left="30.0" right="10.0" />
+            </VBox.margin>
+         </Button>
+         <Button fx:id="deleteRecord" graphicTextGap="20.0" layoutX="10.0" layoutY="79.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="Delete">
+            <VBox.margin>
+               <Insets bottom="10.0" left="30.0" right="10.0" />
+            </VBox.margin>
+            <font>
+               <Font name="System Bold" size="15.0" />
+            </font>
+            <padding>
+               <Insets right="30.0" />
+            </padding></Button>
+         <Button fx:id="refresh" graphicTextGap="16.0" layoutX="10.0" layoutY="104.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="Refresh">
+            <VBox.margin>
+               <Insets bottom="10.0" left="30.0" right="10.0" />
+            </VBox.margin>
+            <font>
+               <Font name="System Bold" size="15.0" />
+            </font>
+            <padding>
+               <Insets right="30.0" />
+            </padding></Button>
+         <Button fx:id="exit" onAction="#exitButton" graphicTextGap="40.0" layoutX="10.0" layoutY="154.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="Exit">
+            <VBox.margin>
+               <Insets bottom="10.0" left="30.0" right="10.0" />
+            </VBox.margin>
+            <font>
+               <Font name="System Bold" size="15.0" />
+            </font>
+            <padding>
+               <Insets right="30.0" />
+            </padding></Button>
+      </VBox>
+   </right>
+</BorderPane>

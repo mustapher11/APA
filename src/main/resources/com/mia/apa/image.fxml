@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox fx:id="vbox" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="250.0"
+      style="-fx-background-color: transparent;"
+      fx:controller="com.mia.apa.ProgressController"
+      xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" />
