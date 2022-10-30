@@ -1,10 +1,12 @@
 package com.mia.apa;
 
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -57,8 +59,11 @@ public class SupplierController implements Initializable {
         supplierList.setGraphic(supplierListImage);
     }
 
-    public void exitSupplierSection(){
-        CreateScene.changeSceneModal("dashboard.fxml", "Dashboard", false);
+    public void exitSupplierSection() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
+        loader.load();
+        LogInController controller = loader.getController();
+        controller.logInButton();
         vbox.getScene().getWindow().hide();
     }
 }

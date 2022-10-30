@@ -4,12 +4,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -107,8 +109,11 @@ public class ReceiptController implements Initializable {
         exit.setGraphic(exitImage);
     }
 
-    public void exitReceiptSection() {
-        CreateScene.changeSceneModal("dashboard.fxml", "Dashboard", false);
+    public void exitReceiptSection() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
+        loader.load();
+        LogInController controller = loader.getController();
+        controller.logInButton();
         vbox.getScene().getWindow().hide();
     }
 

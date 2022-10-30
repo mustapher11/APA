@@ -94,6 +94,5 @@ public class LogInController implements Initializable {
         });
         stage.setResizable(false);
         stage.show();
-        vbox.getScene().getWindow().hide();
     }
 }

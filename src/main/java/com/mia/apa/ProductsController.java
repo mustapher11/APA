@@ -3,12 +3,14 @@ package com.mia.apa;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -88,8 +90,11 @@ public class ProductsController implements Initializable {
         productList.setGraphic(productListImage);
     }
 
-    public void exit(){
-        CreateScene.changeSceneModal("dashboard.fxml", "Dashboard", false);
+    public void exit() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
+        loader.load();
+        LogInController controller = loader.getController();
+        controller.logInButton();
         vbox.getScene().getWindow().hide();
     }
 
