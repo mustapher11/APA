@@ -175,11 +175,10 @@ public class PurchaseSectionController implements Initializable {
 
     public void refreshTable() throws Exception {
         spares = Database.fetchItems();
-        setTable();
         filterSpare();
     }
 
-    public void filterSpare() throws Exception {
+    public void filterSpare() {
         item_id.setCellValueFactory(new PropertyValueFactory<>("code"));
         item_name.setCellValueFactory(new PropertyValueFactory<>("name"));
         make.setCellValueFactory(new PropertyValueFactory<>("make"));
@@ -189,9 +188,6 @@ public class PurchaseSectionController implements Initializable {
         stockSold.setCellValueFactory(new PropertyValueFactory<>("stock_sold"));
         unit_price.setCellValueFactory(new PropertyValueFactory<>("cost"));
         supplier.setCellValueFactory(new PropertyValueFactory<>("supplier"));
-
-        spares.addAll(Database.fetchItems());
-        spareTable.setItems(spares);
 
         FilteredList<Spare> spareFilteredList = new FilteredList<>(spares, b -> true);
         search.textProperty().addListener((observable, oldValue, newValue) -> spareFilteredList.setPredicate(Spare -> {

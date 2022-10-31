@@ -128,7 +128,7 @@ public class ProductsController implements Initializable {
         spareTable.getColumns().add(cashier);
     }
 
-    public void filterProducts() throws Exception {
+    public void filterProducts() {
         code.setCellValueFactory(new PropertyValueFactory<>("code"));
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
         make.setCellValueFactory(new PropertyValueFactory<>("make"));
@@ -141,9 +141,6 @@ public class ProductsController implements Initializable {
         supplier.setCellValueFactory(new PropertyValueFactory<>("supplier"));
         delivery.setCellValueFactory(new PropertyValueFactory<>("delivery"));
         cashier.setCellValueFactory(new PropertyValueFactory<>("cashier"));
-
-        spareItems.addAll(Database.fetchSpares());
-        spareTable.setItems(spareItems);
 
         FilteredList<SpareItem> spareItemFilteredList = new FilteredList<>(spareItems, b -> true);
         searchItem.textProperty().addListener((observable, oldValue, newValue) -> spareItemFilteredList.setPredicate(SpareItem -> {
@@ -214,7 +211,6 @@ public class ProductsController implements Initializable {
 
     public void refreshProductsTable() throws Exception {
         spareItems = Database.fetchSpares();
-        setSpareTable();
         filterProducts();
     }
 
@@ -225,9 +221,9 @@ public class ProductsController implements Initializable {
         itemModel.clear();
         itemStock.clear();
         unitPrice.clear();
-        datePurchased.clear();
         itemSupplier.clear();
         itemDelivery.clear();
+
     }
 
     public void updateButton() throws Exception {

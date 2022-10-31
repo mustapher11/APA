@@ -175,11 +175,10 @@ public class RackController implements Initializable {
 
     public void refreshRack() throws Exception {
         rackObservableList = Database.fetchRackDetails();
-        setRackTable();
         filterRack();
     }
 
-    public void filterRack() throws Exception {
+    public void filterRack() {
         codeColumn.setCellValueFactory(new PropertyValueFactory<>("itemCode"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("itemName"));
         makeColumn.setCellValueFactory(new PropertyValueFactory<>("make"));
@@ -188,9 +187,6 @@ public class RackController implements Initializable {
         costColumn.setCellValueFactory(new PropertyValueFactory<>("cost"));
         numberColumn.setCellValueFactory(new PropertyValueFactory<>("rackNUmber"));
         cashierColumn.setCellValueFactory(new PropertyValueFactory<>("cashier"));
-
-        rackObservableList.addAll(Database.fetchRackDetails());
-        rackTable.setItems(rackObservableList);
 
         FilteredList<Rack> rackFilteredList = new FilteredList<>(rackObservableList, b -> true);
         search.textProperty().addListener((observable, oldValue, newValue) -> rackFilteredList.setPredicate(Rack -> {

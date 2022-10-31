@@ -147,7 +147,6 @@ public class ReceiptController implements Initializable {
 
     public void refreshReceipts() throws Exception {
         receipts = Database.fetchReceipts();
-        setReceiptTable();
         filterReceipts();
     }
 
@@ -179,7 +178,7 @@ public class ReceiptController implements Initializable {
         });
     }
 
-    public void filterReceipts() throws Exception {
+    public void filterReceipts() {
         invoiceNo.setCellValueFactory(new PropertyValueFactory<>("invoiceNo"));
         itemCode.setCellValueFactory(new PropertyValueFactory<>("itemCode"));
         itemName.setCellValueFactory(new PropertyValueFactory<>("itemName"));
@@ -191,9 +190,6 @@ public class ReceiptController implements Initializable {
         date.setCellValueFactory(new PropertyValueFactory<>("date"));
         time.setCellValueFactory(new PropertyValueFactory<>("time"));
         cashier.setCellValueFactory(new PropertyValueFactory<>("cashier"));
-
-        receipts.addAll(Database.fetchReceipts());
-        receiptTable.setItems(receipts);
 
         FilteredList<Receipt> receiptFilteredList = new FilteredList<>(receipts, b -> true);
         searchReceipt.textProperty().addListener((observable, oldValue, newValue) -> receiptFilteredList.setPredicate(Receipt -> {
