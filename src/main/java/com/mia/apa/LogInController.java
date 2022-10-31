@@ -89,6 +89,7 @@ public class LogInController implements Initializable {
         stage.setOnCloseRequest(e -> {
             e.consume();
             if (AlertMessage.exitSection("Do you want to exit the system?")){
+                CreateScene.changeSceneModal("login.fxml", "Log In", false);
                 stage.close();
             }
         });

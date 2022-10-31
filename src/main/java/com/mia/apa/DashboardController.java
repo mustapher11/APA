@@ -127,7 +127,7 @@ public class DashboardController implements Initializable {
         stage.setOnCloseRequest(e -> {
             e.consume();
             if (AlertMessage.exitSection("Do you want to exit the system?")) {
-                stage.close();
+                exitSections();
             }
         });
         stage.setResizable(true);
@@ -155,7 +155,7 @@ public class DashboardController implements Initializable {
         stage.setOnCloseRequest(e -> {
             e.consume();
             if (AlertMessage.exitSection("Do you want to exit the system?")) {
-                stage.close();
+                exitSections();
             }
         });
         stage.setResizable(true);
@@ -210,7 +210,7 @@ public class DashboardController implements Initializable {
         stage.setOnCloseRequest(e -> {
             e.consume();
             if (AlertMessage.exitSection("Do you want to exit the system?")) {
-                stage.close();
+                exitSections();
             }
         });
         stage.setResizable(true);
@@ -233,7 +233,7 @@ public class DashboardController implements Initializable {
         stage.setOnCloseRequest(e -> {
             e.consume();
             if (AlertMessage.exitSection("Do you want to exit the system?")) {
-                stage.close();
+                exitSections();
             }
         });
         stage.setResizable(true);
@@ -256,7 +256,7 @@ public class DashboardController implements Initializable {
         stage.setOnCloseRequest(e -> {
             e.consume();
             if (AlertMessage.exitSection("Do you want to exit the system?")) {
-                stage.close();
+                exitSections();
             }
         });
         stage.setResizable(true);
@@ -264,5 +264,18 @@ public class DashboardController implements Initializable {
         stage.show();
         vbox.getScene().getWindow().hide();
         vbox.getScene().getWindow().hide();
+    }
+
+    public void exitSections(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
+        try {
+            loader.load();
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+        LogInController controller = loader.getController();
+        controller.logInButton();
+        vbox.getScene().getWindow().hide();
+        stage.close();
     }
 }
