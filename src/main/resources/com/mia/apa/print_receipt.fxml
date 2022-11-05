@@ -12,9 +12,6 @@
 <VBox fx:id="vbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="350.0" spacing="10.0" style="-fx-background-color: linear-gradient(to right, #EE9CA7, #FFDDE1);"
       xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mia.apa.PrintReceiptController">
     <Label text="Print Receipt">
-        <font>
-            <Font name="System Bold" size="15.0" />
-        </font>
         <VBox.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
         </VBox.margin>
