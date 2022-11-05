@@ -86,10 +86,10 @@ public class PrintReceiptController implements Initializable {
         int totalSum = 0;
 
         textArea.clear();
-        textArea.setText("ALI POLE AUTO SPARES\n");
-        textArea.appendText("DEALERS IN AUTO MOBILE SPARES & TOOLS\n");
-        textArea.appendText("MAJENGO-MVITA OPPOSITE UWANJA WA JOHO\n");
-        textArea.appendText("TEL: +254712061300\n\n");
+        textArea.setText("\t\tALI POLE AUTO SPARES\n");
+        textArea.appendText("\t\tDEALERS IN AUTO MOBILE SPARES\n");
+        textArea.appendText("\t\tMAJENGO-MVITA \n\t\tOPPOSITE UWANJA WA JOHO\n");
+        textArea.appendText("\t\tTEL: +254712061300\n\n");
         textArea.appendText("Receipt No: " + receiptNo + "\n");
         textArea.appendText("Date: " + date + "\n");
         textArea.appendText("Time: " + time + "\n");

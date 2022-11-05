@@ -24,7 +24,7 @@
         </VBox.margin>
         <TextArea fx:id="textArea" prefHeight="469.0" prefWidth="330.0">
             <font>
-                <Font name="Tahoma Bold" size="10.0" />
+                <Font name="System Bold" size="10.0" />
             </font>
         </TextArea>
     </ScrollPane>
