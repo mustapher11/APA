@@ -369,7 +369,6 @@ public class ReceiptController implements Initializable {
                 refreshReceipts();
                 filterReceipts();
             }
-
         }
     }
 
