@@ -99,9 +99,9 @@ public class PrintReceiptController implements Initializable {
             textArea.appendText("ITEM:\t" + name + "\n");
             textArea.appendText("QTY:\t\t" + quantity + "\n");
             textArea.appendText("AMOUNT:\t" + "kshs." + cost + ".00" + "\n");
-            textArea.appendText("TOTAL COST:\t" + "kshs." + totalCost + ".00" + "\n\n");
+            textArea.appendText("COST:\t" + "kshs." + totalCost + ".00" + "\n\n");
             totalSum = Integer.parseInt(Objects.requireNonNullElse(totalCost, "0"));
         }
-        textArea.appendText("TOTAL PRICE FOR ITEMS:\t" + "kshs." + totalSum +  ".00");
+        textArea.appendText("TOTAL PRICE:\t" + "kshs." + totalSum +  ".00");
     }
 }
