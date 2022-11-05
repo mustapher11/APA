@@ -31,4 +31,13 @@ public class AlertMessage {
         return buttonType.filter(type -> type == ButtonType.OK).isPresent();
 
     }
+
+    public static boolean deleteConfirmation(String message) {
+        exitAlert = new Alert(Alert.AlertType.CONFIRMATION);
+        exitAlert.setHeaderText("Delete Confirmation");
+        exitAlert.setContentText(message);
+        buttonType = exitAlert.showAndWait();
+        return buttonType.filter(type -> type == ButtonType.OK).isPresent();
+
+    }
 }

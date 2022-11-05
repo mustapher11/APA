@@ -332,11 +332,13 @@ public class ProductsController implements Initializable {
 
         } else {
             if (Database.checkSpareItem(item_code)){
-                Database.deleteProduct(item_code);
-                clearProductFields();
-                refreshProductsTable();
-                filterProducts();
-                AlertMessage.showSuccessAlert("Spare item successfully deleted!");
+                if (AlertMessage.deleteConfirmation("Are you sure you want to delete the selected item?")){
+                    Database.deleteProduct(item_code);
+                    clearProductFields();
+                    refreshProductsTable();
+                    filterProducts();
+                    AlertMessage.showSuccessAlert("Spare item successfully deleted!");
+                }
             }else {
                 AlertMessage.showErrorAlert("Spare item cannot be found!");
                 clearProductFields();

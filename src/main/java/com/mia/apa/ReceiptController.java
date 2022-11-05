@@ -362,11 +362,14 @@ public class ReceiptController implements Initializable {
             AlertMessage.showErrorAlert("Total Cost must br filled!");
 
         } else {
-            Database.deleteReceipt(invoiceNo, itemCode);
-            AlertMessage.showSuccessAlert("Receipt successfully deleted!");
-            clearTextFields();
-            refreshReceipts();
-            filterReceipts();
+            if (AlertMessage.deleteConfirmation("Are you sure you want to delete the selected receipt?")){
+                Database.deleteReceipt(invoiceNo, itemCode);
+                AlertMessage.showSuccessAlert("Receipt successfully deleted!");
+                clearTextFields();
+                refreshReceipts();
+                filterReceipts();
+            }
+
         }
     }
 

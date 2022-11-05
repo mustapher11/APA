@@ -259,11 +259,13 @@ public class RackController implements Initializable {
         } else {
             boolean found = Database.checkSpareItemInRack(item_code);
             if (found){
-                Database.deleteRack(rack_number);
-                clearButton();
-                refreshRack();
-                filterRack();
-                AlertMessage.showSuccessAlert("Rack successfully deleted!");
+                if (AlertMessage.deleteConfirmation("Are you sure you want to remove the product from rack?")){
+                    Database.deleteRack(rack_number);
+                    clearButton();
+                    refreshRack();
+                    filterRack();
+                    AlertMessage.showSuccessAlert("Rack successfully deleted!");
+                }
             }else {
                 AlertMessage.showErrorAlert("Spare item not found!");
             }
