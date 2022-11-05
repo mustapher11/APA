@@ -126,7 +126,7 @@ public class DashboardController implements Initializable {
         stage.setScene(scene);
         stage.setOnCloseRequest(e -> {
             e.consume();
-            if (AlertMessage.exitSection("Do you want to exit the system?")) {
+            if (AlertMessage.exitSection("Do you want to exit purchase section?")) {
                 exitSections();
             }
         });
@@ -154,7 +154,7 @@ public class DashboardController implements Initializable {
         stage.setScene(scene);
         stage.setOnCloseRequest(e -> {
             e.consume();
-            if (AlertMessage.exitSection("Do you want to exit the system?")) {
+            if (AlertMessage.exitSection("Do you want to exit products section?")) {
                 exitSections();
             }
         });
@@ -209,7 +209,7 @@ public class DashboardController implements Initializable {
         stage.getIcons().add(new Image("icons8-gear-100.png"));
         stage.setOnCloseRequest(e -> {
             e.consume();
-            if (AlertMessage.exitSection("Do you want to exit the system?")) {
+            if (AlertMessage.exitSection("Do you want to exit supplier section?")) {
                 exitSections();
             }
         });
@@ -232,7 +232,7 @@ public class DashboardController implements Initializable {
         stage.getIcons().add(new Image("icons8-gear-100.png"));
         stage.setOnCloseRequest(e -> {
             e.consume();
-            if (AlertMessage.exitSection("Do you want to exit the system?")) {
+            if (AlertMessage.exitSection("Do you want to exit rack section?")) {
                 exitSections();
             }
         });
@@ -255,7 +255,7 @@ public class DashboardController implements Initializable {
         stage.getIcons().add(new Image("icons8-gear-100.png"));
         stage.setOnCloseRequest(e -> {
             e.consume();
-            if (AlertMessage.exitSection("Do you want to exit the system?")) {
+            if (AlertMessage.exitSection("Do you want to exit receipt section?")) {
                 exitSections();
             }
         });

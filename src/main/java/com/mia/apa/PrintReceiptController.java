@@ -54,7 +54,7 @@ public class PrintReceiptController implements Initializable {
         JobSettings jobSettings = printerJob.getJobSettings();
         PageLayout pageLayout = jobSettings.getPageLayout();
 
-        Font font = Font.font("Freeroad Bold.ttf", FontWeight.EXTRA_BOLD, FontPosture.ITALIC, 8);
+        Font font = Font.font("Freeroad Bold.ttf", FontWeight.EXTRA_BOLD, FontPosture.ITALIC, 10);
         textArea.setFont(font);
 
         if (!generatedReceipt.isEmpty() || !generatedReceipt.isBlank()) {
@@ -66,12 +66,17 @@ public class PrintReceiptController implements Initializable {
         }
         jobSettings.setPageLayout(pageLayout);
 
-        boolean isPrinted = printerJob.printPage(pageLayout, textArea);
-        if (isPrinted) {
-            printerJob.endJob();
-            textArea.clear();
-            AlertMessage.showSuccessAlert("Receipt successfully printed!");
+        if (!textArea.getText().isEmpty()){
+            boolean isPrinted = printerJob.printPage(pageLayout, textArea);
+            if (isPrinted) {
+                printerJob.endJob();
+                textArea.clear();
+                AlertMessage.showSuccessAlert("Receipt successfully printed!");
+            }
+        }else {
+            AlertMessage.showErrorAlert("Cannot print an empty receipt!");
         }
+
     }
 
     public void createReceipt(){

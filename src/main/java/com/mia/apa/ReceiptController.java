@@ -155,7 +155,6 @@ public class ReceiptController implements Initializable {
             TableRow<Receipt> tableRow = new TableRow<>();
             tableRow.setOnMouseClicked(e -> {
                 if (e.getClickCount() == 2){
-                    //dateText, timeText, invoice, nameString, quantityString, priceString, totalString
                     number.setText(tableRow.getItem().getInvoiceNo());
                     code.setText(tableRow.getItem().getItemCode());
                     name.setText(tableRow.getItem().getItemName());
