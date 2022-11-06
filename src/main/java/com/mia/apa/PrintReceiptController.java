@@ -54,8 +54,9 @@ public class PrintReceiptController implements Initializable {
         JobSettings jobSettings = printerJob.getJobSettings();
         PageLayout pageLayout = jobSettings.getPageLayout();
 
-        Font font = Font.font("Freeroad Bold.ttf", FontWeight.EXTRA_BOLD, FontPosture.ITALIC, 10);
-        textArea.setFont(font);
+//        Font font = Font.font("Freeroad Bold.ttf", FontWeight.EXTRA_BOLD, FontPosture.ITALIC, 10);
+//        textArea.setFont(font);
+        textArea.setStyle("-fx-font: normal bold 15px 'fake receipt.ttf'");
 
         if (!generatedReceipt.isEmpty() || !generatedReceipt.isBlank()) {
             if (printers != null && !printers.isEmpty()) {
