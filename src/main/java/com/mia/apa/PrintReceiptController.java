@@ -2,15 +2,12 @@ package com.mia.apa;
 
 import javafx.collections.ObservableSet;
 import javafx.fxml.Initializable;
-import javafx.print.*;
 import javafx.print.Printer;
+import javafx.print.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
-import javafx.scene.text.FontWeight;
 
 import java.net.URL;
 import java.util.Objects;
@@ -53,10 +50,6 @@ public class PrintReceiptController implements Initializable {
         PrinterJob printerJob = PrinterJob.createPrinterJob();
         JobSettings jobSettings = printerJob.getJobSettings();
         PageLayout pageLayout = jobSettings.getPageLayout();
-
-//        Font font = Font.font("Freeroad Bold.ttf", FontWeight.EXTRA_BOLD, FontPosture.ITALIC, 10);
-//        textArea.setFont(font);
-        textArea.setStyle("-fx-font: normal bold 15px 'fake receipt.ttf'");
 
         if (!generatedReceipt.isEmpty() || !generatedReceipt.isBlank()) {
             if (printers != null && !printers.isEmpty()) {

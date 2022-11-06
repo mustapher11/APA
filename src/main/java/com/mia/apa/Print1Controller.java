@@ -9,9 +9,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
-import javafx.scene.text.FontWeight;
 
 import java.net.URL;
 import java.util.Objects;
@@ -75,9 +72,6 @@ public class Print1Controller implements Initializable {
         String generatedReceipt = textArea.getText().trim();
         int rowsAffected = 0;
         int updatedField = 0;
-
-        Font font = Font.font("Freeroad Bold.ttf", FontWeight.EXTRA_BOLD, FontPosture.ITALIC, 8);
-        textArea.setFont(font);
 
         if (!queue.isEmpty()){
             for (Item item: queue){
