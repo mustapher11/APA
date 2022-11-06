@@ -224,7 +224,6 @@ public class ProductsController implements Initializable {
         datePurchased.setText(dateText);
         itemSupplier.clear();
         itemDelivery.clear();
-
     }
 
     public void updateButton() throws Exception {
