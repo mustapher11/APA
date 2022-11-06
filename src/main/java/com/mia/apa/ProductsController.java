@@ -221,6 +221,7 @@ public class ProductsController implements Initializable {
         itemModel.clear();
         itemStock.clear();
         unitPrice.clear();
+        datePurchased.setText(dateText);
         itemSupplier.clear();
         itemDelivery.clear();
 
