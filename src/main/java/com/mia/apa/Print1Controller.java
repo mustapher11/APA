@@ -45,7 +45,6 @@ public class Print1Controller implements Initializable {
 
         System.out.println(updatedStockAvailable + "  " + updateStockSold);
 
-        textArea.setEditable(false);
         createImageButtons();
         createReceipt();
     }

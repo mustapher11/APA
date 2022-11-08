@@ -41,7 +41,6 @@ public class PrintController implements Initializable {
         queue = PurchaseSectionController.getQueue();
         receiptNo = Invoice.invoiceNumber();
 
-        textArea.setEditable(false);
         createImageButtons();
         createReceipt();
     }
