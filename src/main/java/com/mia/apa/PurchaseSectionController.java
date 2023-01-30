@@ -326,7 +326,7 @@ public class PurchaseSectionController implements Initializable {
 
     public static int getNewStockSold() {
         int calculation = 0;
-        if (getSpareQuantity() != null){
+        if (getSpareQuantity() != null && !getSpareQuantity().isEmpty()){
             calculation = newStockSold + Integer.parseInt(getSpareQuantity());
         }
         return calculation;
