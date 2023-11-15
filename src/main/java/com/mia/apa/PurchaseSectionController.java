@@ -10,6 +10,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 
 import java.io.IOException;
 import java.net.URL;
@@ -27,9 +29,10 @@ public class PurchaseSectionController implements Initializable {
     public TextField itemCode;
 
     public TextField itemName, ref1, ref2, quantity, unitPrice, totalPrice;
-    public TableColumn<Spare, String>  item_id, item_name, make, model,stockPurchased, stockAvailable, stockSold, unit_price, supplier;
+    public TableColumn<Spare, String>  item_id, item_name, make, model,stockPurchased, stockAvailable, stockSold, unit_price, supplier, action;
 
     public TextField search;
+    public CheckBox selectAll;
     ImageView addImage, clearImage, clearOrderImage, generateImage, purchaseImage, exitImage, totalImage, refreshImage;
     ObservableList<Spare> spares;
     static ObservableList<Item> queue;
@@ -50,6 +53,7 @@ public class PurchaseSectionController implements Initializable {
         createControlButtons();
         setTable();
         fetchTableData();
+        checkBoxFont();
         try {
             filterSpare();
         } catch (Exception e) {
@@ -99,7 +103,12 @@ public class PurchaseSectionController implements Initializable {
         total.setGraphic(totalImage);
         refresh.setGraphic(refreshImage);
 
-        generate.setDisable(true);
+//        generate.setDisable(true);
+    }
+
+    public void checkBoxFont(){
+        Font font = Font.font("System", FontWeight.BOLD, 14.0);
+        selectAll.setFont(font);
     }
 
     public void exitButton() throws IOException {
@@ -159,6 +168,7 @@ public class PurchaseSectionController implements Initializable {
         stockSold.setCellValueFactory(new PropertyValueFactory<>("stock_sold"));
         unit_price.setCellValueFactory(new PropertyValueFactory<>("cost"));
         supplier.setCellValueFactory(new PropertyValueFactory<>("supplier"));
+        action.setCellValueFactory(new PropertyValueFactory<>("action"));
 
         spareTable.setItems(spares);
         spareTable.getColumns().clear();
@@ -171,6 +181,7 @@ public class PurchaseSectionController implements Initializable {
         spareTable.getColumns().add(stockSold);
         spareTable.getColumns().add(unit_price);
         spareTable.getColumns().add(supplier);
+        spareTable.getColumns().add(action);
     }
 
     public void refreshTable() throws Exception {

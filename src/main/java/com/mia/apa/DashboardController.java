@@ -100,8 +100,8 @@ public class DashboardController implements Initializable {
         customer.setGraphic(customerImage);
         purchase.setGraphic(purchaseImage);
         purchaseOrder.setGraphic(purchaseOrderImage);
-        receipts.setGraphic(receiptImage);
-        racking.setGraphic(rackingImage);
+        receipts.setGraphic(rackingImage);
+        racking.setGraphic(receiptImage);
         purchaseReturn.setGraphic(purchaseReturnImage);
         warehouse.setGraphic(warehouseImage);
         suppliers.setGraphic(supplierImage);
@@ -149,7 +149,7 @@ public class DashboardController implements Initializable {
         }
         stage = new Stage();
         scene = new Scene(root);
-        stage.setTitle("Products Section");
+        stage.setTitle("Spares");
         stage.getIcons().add(new Image("icons8-gear-100.png"));
         stage.setScene(scene);
         stage.setOnCloseRequest(e -> {

@@ -6,9 +6,9 @@
 <?import javafx.scene.text.Font?>
 
 <StackPane fx:id="stackPane" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: linear-gradient(to right, #EE9CA7, #FFDDE1);" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mia.apa.SplashController">
-    <Label  text="A.P.A. Spares" textAlignment="CENTER" textFill="#000" wrapText="true" StackPane.alignment="CENTER">
+    <Label  text="Jiwani Impex Limited" textAlignment="CENTER" textFill="#000" wrapText="true" StackPane.alignment="CENTER">
         <font>
-            <Font name="System Bold" size="66.0" />
+            <Font name="System Bold" size="62.0" />
         </font>
     </Label>
     <opaqueInsets>

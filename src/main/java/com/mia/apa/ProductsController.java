@@ -1,5 +1,6 @@
 package com.mia.apa;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
@@ -9,6 +10,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import org.controlsfx.control.textfield.TextFields;
 
 import java.io.IOException;
 import java.net.URL;
@@ -16,17 +20,21 @@ import java.util.ResourceBundle;
 
 public class ProductsController implements Initializable {
 
-    public Button save, clear, exit, update, delete, refresh, productList;
+    public Button save, clear, exit, update, delete, refresh, productList, report;
 
     public VBox vbox;
     public TableView<SpareItem> spareTable;
 
-    public TableColumn<SpareItem, String> code, name, make, model, stockPurchased, stockSold, stockAvailable, unitCost, date, supplier, delivery, cashier;
+    public TableColumn<SpareItem, String> code, name, make, model, stockPurchased, stockSold, stockAvailable, unitCost, date, supplier, delivery, cashier, action;
     public TextField searchItem;
 
-    public TextField itemCode, itemName, itemMake, itemModel, itemStock, unitPrice, datePurchased, itemSupplier, itemDelivery;
-    ImageView saveImage, clearImage, exitImage, updateImage, deleteImage, refreshImage, productListImage;
+    public TextField truckNumber, invoice, spare, truckMake, truckModel, stock, price, purchaseDate, spareSupplier;
+    public CheckBox selectAll;
+
+    ImageView saveImage, clearImage, exitImage, updateImage, deleteImage, refreshImage, productListImage, receiptImage;
     ObservableList<SpareItem> spareItems;
+
+    ObservableList<String> vehicleNumber;
     String dateText, cashierID, newStock;
     TableRow<SpareItem> tableRow1;
 
@@ -38,12 +46,22 @@ public class ProductsController implements Initializable {
             throw new RuntimeException(e);
         }
 
+        vehicleNumber = FXCollections.observableArrayList();
+
+        for (SpareItem spareItem: spareItems){
+            vehicleNumber.add(spareItem.getCode());
+        }
+
+        TextFields.bindAutoCompletion(truckNumber, vehicleNumber);
+
         cashierID = LogInController.getIdText();
         dateText = DateClass.generateDate();
-        datePurchased.setText(dateText);
+        purchaseDate.setText(dateText);
 
         createImageButtons();
         setSpareTable();
+        selectAll();
+        checkBoxFont();
         try {
             filterProducts();
         } catch (Exception e) {
@@ -81,6 +99,10 @@ public class ProductsController implements Initializable {
         productListImage.setFitHeight(30.0);
         productListImage.setPreserveRatio(true);
 
+        receiptImage = new ImageView("icons8-receipt-96.png");
+        receiptImage.setFitHeight(30.0);
+        receiptImage.setPreserveRatio(true);
+
         save.setGraphic(saveImage);
         clear.setGraphic(clearImage);
         exit.setGraphic(exitImage);
@@ -88,6 +110,7 @@ public class ProductsController implements Initializable {
         delete.setGraphic(deleteImage);
         refresh.setGraphic(refreshImage);
         productList.setGraphic(productListImage);
+        report.setGraphic(receiptImage);
     }
 
     public void exit() throws IOException {
@@ -111,21 +134,23 @@ public class ProductsController implements Initializable {
         supplier.setCellValueFactory(new PropertyValueFactory<>("supplier"));
         delivery.setCellValueFactory(new PropertyValueFactory<>("delivery"));
         cashier.setCellValueFactory(new PropertyValueFactory<>("cashier"));
+        action.setCellValueFactory(new PropertyValueFactory<>("action"));
 
         spareTable.setItems(spareItems);
         spareTable.getColumns().clear();
         spareTable.getColumns().add(code);
+        spareTable.getColumns().add(delivery);
         spareTable.getColumns().add(name);
         spareTable.getColumns().add(make);
         spareTable.getColumns().add(model);
         spareTable.getColumns().add(stockPurchased);
+        spareTable.getColumns().add(unitCost);
+        spareTable.getColumns().add(cashier);
         spareTable.getColumns().add(stockAvailable);
         spareTable.getColumns().add(stockSold);
-        spareTable.getColumns().add(unitCost);
         spareTable.getColumns().add(date);
         spareTable.getColumns().add(supplier);
-        spareTable.getColumns().add(delivery);
-        spareTable.getColumns().add(cashier);
+        spareTable.getColumns().add(action);
     }
 
     public void filterProducts() {
@@ -193,15 +218,15 @@ public class ProductsController implements Initializable {
             TableRow<SpareItem> tableRow = new TableRow<>();
             tableRow.setOnMouseClicked(e -> {
                 if (e.getClickCount() == 2){
-                    itemCode.setText(tableRow.getItem().getCode());
-                    itemName.setText(tableRow.getItem().getName());
-                    itemMake.setText(tableRow.getItem().getMake());
-                    itemModel.setText(tableRow.getItem().getModel());
-                    itemStock.setText(tableRow.getItem().getStockPurchased());
-                    unitPrice.setText(tableRow.getItem().getPrice().replaceFirst("Kshs.", ""));
-                    datePurchased.setText(tableRow.getItem().getDate());
-                    itemSupplier.setText(tableRow.getItem().getSupplier());
-                    itemDelivery.setText(tableRow.getItem().getDelivery());
+                    truckNumber.setText(tableRow.getItem().getCode());
+                    invoice.setText(tableRow.getItem().getName());
+                    spare.setText(tableRow.getItem().getMake());
+                    truckMake.setText(tableRow.getItem().getModel());
+                    truckModel.setText(tableRow.getItem().getStockPurchased());
+                    stock.setText(tableRow.getItem().getDelivery());
+                    price.setText(tableRow.getItem().getPrice().replaceFirst("Kshs.", ""));
+                    purchaseDate.setText(tableRow.getItem().getDate());
+                    spareSupplier.setText(tableRow.getItem().getSupplier());
                     tableRow1 = tableRow;
                 }
             });
@@ -214,65 +239,86 @@ public class ProductsController implements Initializable {
         filterProducts();
     }
 
+    public void selectAll(){
+        selectAll.selectedProperty().addListener((observableValue, aBoolean, t1) -> {
+            for (SpareItem spareItem: spareItems) {
+                spareItem.getAction().setSelected(selectAll.isSelected());
+            }
+        });
+    }
+
+    public void printReport(){
+        for (SpareItem spareItem: spareItems){
+            if (spareItem.getAction().isSelected()){
+                System.out.println(spareItem.getCode() + " " + spareItem.getName() + " " + spareItem.getStockAvailable());
+            }
+        }
+    }
+
+    public void checkBoxFont(){
+        Font font = Font.font("System", FontWeight.BOLD, 14.0);
+        selectAll.setFont(font);
+    }
+
     public void clearProductFields(){
-        itemCode.clear();
-        itemName.clear();
-        itemMake.clear();
-        itemModel.clear();
-        itemStock.clear();
-        unitPrice.clear();
-        datePurchased.setText(dateText);
-        itemSupplier.clear();
-        itemDelivery.clear();
+        truckNumber.clear();
+        invoice.clear();
+        spare.clear();
+        truckMake.clear();
+        truckModel.clear();
+        stock.clear();
+        price.clear();
+        purchaseDate.setText(dateText);
+        spareSupplier.clear();
     }
 
     public void updateButton() throws Exception {
-        String item_code = itemCode.getText().trim().toUpperCase();
-        String item_name = itemName.getText().trim().toUpperCase();
-        String item_make = itemMake.getText().trim().toUpperCase();
-        String item_model = itemModel.getText().trim().toUpperCase();
-        String item_stock = itemStock.getText().trim();
-        String unit_price = unitPrice.getText().trim();
-        String date_purchased = datePurchased.getText().trim();
-        String item_supplier = itemSupplier.getText().trim().toUpperCase();
-        String item_delivery = itemDelivery.getText().trim().toUpperCase();
+        String plateNumber = truckNumber.getText().trim().toUpperCase();
+        String receiptInvoice = invoice.getText().trim().toUpperCase();
+        String sparePart = spare.getText().trim().toUpperCase();
+        String vehicleMake = truckMake.getText().trim().toUpperCase();
+        String vehicleModel = truckModel.getText().trim();
+        String spareStock = stock.getText().trim();
+        String unitPrice = price.getText().trim().toUpperCase();
+        String date_purchased = purchaseDate.getText().trim();
+        String item_supplier = spareSupplier.getText().trim().toUpperCase();
 
-        if (item_code.isEmpty() && item_name.isEmpty() && item_make.isEmpty() && item_model.isEmpty()
-                && item_stock.isEmpty() && unit_price.isEmpty() && date_purchased.isEmpty() && item_supplier.isEmpty()
-         && item_delivery.isEmpty()){
+        if (plateNumber.isEmpty() && receiptInvoice.isEmpty() && sparePart.isEmpty() && vehicleMake.isEmpty()
+                && vehicleModel.isEmpty() && spareStock.isEmpty() && unitPrice.isEmpty() && date_purchased.isEmpty() && item_supplier.isEmpty()){
             AlertMessage.showErrorAlert("All fields must be filled!");
 
-        } else if (item_code.isEmpty()) {
+        } else if (plateNumber.isEmpty()) {
             AlertMessage.showErrorAlert("Item Code must be filled!");
 
-        } else if (item_name.isEmpty()) {
+        } else if (receiptInvoice.isEmpty()) {
             AlertMessage.showErrorAlert("Item Name must be filled!");
 
-        } else if (item_make.isEmpty()) {
+        } else if (sparePart.isEmpty()) {
             AlertMessage.showErrorAlert("Item Make must be filled!");
 
-        } else if (item_model.isEmpty()) {
+        } else if (vehicleMake.isEmpty()) {
             AlertMessage.showErrorAlert("Item Model must be filled!");
 
-        } else if (item_stock.isEmpty()) {
+        } else if (vehicleModel.isEmpty()) {
             AlertMessage.showErrorAlert("Stock must be filled!");
 
-        } else if (unit_price.isEmpty()) {
+        } else if (spareStock.isEmpty()) {
             AlertMessage.showErrorAlert("Price field must be filled!");
 
-        } else if (date_purchased.isEmpty()) {
+        } else if (unitPrice.isEmpty()) {
             AlertMessage.showErrorAlert("Date must be filled!");
 
-        } else if (item_supplier.isEmpty()) {
+        } else if (date_purchased.isEmpty()) {
             AlertMessage.showErrorAlert("Supplier must be filled!");
 
-        } else if (item_delivery.isEmpty()){
+        } else if (item_supplier.isEmpty()){
             AlertMessage.showErrorAlert("Delivery must be filled!");
 
         }else {
-            if (Database.checkSpareItem(item_code)){
-                newStock = String.valueOf(Integer.parseInt(itemStock.getText().trim()) - Integer.parseInt(tableRow1.getItem().getStockSold()));
-                int rowsAffected = Database.updateProduct(item_code, item_name, item_make, item_model, newStock, item_stock, unit_price, date_purchased, item_supplier, item_delivery);
+            if (Database.checkSpareItem(plateNumber)){
+                newStock = String.valueOf(Integer.parseInt(stock.getText().trim()) - Integer.parseInt(tableRow1.getItem().getStockSold()));
+                String total = String.valueOf(Integer.parseInt(newStock) * Integer.parseInt(tableRow1.getItem().getPrice()));
+                int rowsAffected = Database.updateProduct(plateNumber, receiptInvoice, sparePart, vehicleMake, vehicleModel, spareStock, unitPrice, total,  newStock, date_purchased, item_supplier);
                 if (rowsAffected > 0){
                     refreshProductsTable();
                     clearProductFields();
@@ -288,96 +334,118 @@ public class ProductsController implements Initializable {
     }
 
     public void deleteButton() throws Exception {
-        String item_code = itemCode.getText().trim().toUpperCase();
-        String item_name = itemName.getText().trim().toUpperCase();
-        String item_make = itemMake.getText().trim().toUpperCase();
-        String item_model = itemModel.getText().trim().toUpperCase();
-        String item_stock = itemStock.getText().trim();
-        String unit_price = unitPrice.getText().trim();
-        String date_purchased = datePurchased.getText().trim();
-        String item_supplier = itemSupplier.getText().trim().toUpperCase();
-        String item_delivery = itemDelivery.getText().trim().toUpperCase();
-
-        if (item_code.isEmpty() && item_name.isEmpty() && item_make.isEmpty() && item_model.isEmpty()
-                && item_stock.isEmpty() && unit_price.isEmpty() && date_purchased.isEmpty() && item_supplier.isEmpty()
-                && item_delivery.isEmpty()){
-            AlertMessage.showErrorAlert("All fields must be filled!");
-
-        } else if (item_code.isEmpty()) {
-            AlertMessage.showErrorAlert("Item Code must be filled!");
-
-        } else if (item_name.isEmpty()) {
-            AlertMessage.showErrorAlert("Item Name must be filled!");
-
-        } else if (item_make.isEmpty()) {
-            AlertMessage.showErrorAlert("Item Make must be filled!");
-
-        } else if (item_model.isEmpty()) {
-            AlertMessage.showErrorAlert("Item Model must be filled!");
-
-        } else if (item_stock.isEmpty()) {
-            AlertMessage.showErrorAlert("Stock must be filled!");
-
-        } else if (unit_price.isEmpty()) {
-            AlertMessage.showErrorAlert("Price field must be filled!");
-
-        } else if (date_purchased.isEmpty()) {
-            AlertMessage.showErrorAlert("Date must be filled!");
-
-        } else if (item_supplier.isEmpty()) {
-            AlertMessage.showErrorAlert("Supplier must be filled!");
-
-        } else if (item_delivery.isEmpty()){
-            AlertMessage.showErrorAlert("Delivery must be filled!");
-
-        } else {
-            if (Database.checkSpareItem(item_code)){
-                if (AlertMessage.deleteConfirmation("Are you sure you want to delete the selected item?")){
-                    Database.deleteProduct(item_code);
-                    clearProductFields();
-                    refreshProductsTable();
-                    filterProducts();
-                    AlertMessage.showSuccessAlert("Spare item successfully deleted!");
+        if (AlertMessage.deleteConfirmation("Are you sure you want to delete the selected item(s)?")) {
+            for (int i = 0; i < spareItems.size(); i++) {
+                if (spareItems.get(i).getAction().isSelected()) {
+                    String item_code = spareItems.get(i).getCode().trim();
+                    if (Database.checkSpareItem(item_code)) {
+                        Database.deleteProduct(item_code);
+                        if (i == 1){
+                            AlertMessage.showSuccessAlert("Spare item(s) successfully deleted!");
+                        }
+                    }else {
+                        if (i == 1){
+                            AlertMessage.showErrorAlert("Spare item cannot be found!");
+                        }
+                    }
+                }else {
+                    AlertMessage.showErrorAlert("Please select an item to be deleted!");
                 }
-            }else {
-                AlertMessage.showErrorAlert("Spare item cannot be found!");
-                clearProductFields();
             }
         }
+        refreshProductsTable();
+        filterProducts();
+//
+//        String item_code = truckNumber.getText().trim().toUpperCase();
+//        String item_name = invoice.getText().trim().toUpperCase();
+//        String item_make = spare.getText().trim().toUpperCase();
+//        String item_model = truckMake.getText().trim().toUpperCase();
+//        String item_stock = truckModel.getText().trim();
+//        String unit_price = stock.getText().trim();
+//        String date_purchased = purchaseDate.getText().trim();
+//        String item_supplier = spareSupplier.getText().trim().toUpperCase();
+//        String item_delivery = price.getText().trim().toUpperCase();
+//
+//        if (item_code.isEmpty() && item_name.isEmpty() && item_make.isEmpty() && item_model.isEmpty()
+//                && item_stock.isEmpty() && unit_price.isEmpty() && date_purchased.isEmpty() && item_supplier.isEmpty()
+//                && item_delivery.isEmpty()){
+//            AlertMessage.showErrorAlert("All fields must be filled!");
+//
+//        } else if (item_code.isEmpty()) {
+//            AlertMessage.showErrorAlert("Item Code must be filled!");
+//
+//        } else if (item_name.isEmpty()) {
+//            AlertMessage.showErrorAlert("Item Name must be filled!");
+//
+//        } else if (item_make.isEmpty()) {
+//            AlertMessage.showErrorAlert("Item Make must be filled!");
+//
+//        } else if (item_model.isEmpty()) {
+//            AlertMessage.showErrorAlert("Item Model must be filled!");
+//
+//        } else if (item_stock.isEmpty()) {
+//            AlertMessage.showErrorAlert("Stock must be filled!");
+//
+//        } else if (unit_price.isEmpty()) {
+//            AlertMessage.showErrorAlert("Price field must be filled!");
+//
+//        } else if (date_purchased.isEmpty()) {
+//            AlertMessage.showErrorAlert("Date must be filled!");
+//
+//        } else if (item_supplier.isEmpty()) {
+//            AlertMessage.showErrorAlert("Supplier must be filled!");
+//
+//        } else if (item_delivery.isEmpty()){
+//            AlertMessage.showErrorAlert("Delivery must be filled!");
+//
+//        } else {
+//            if (Database.checkSpareItem(item_code)){
+//                if (AlertMessage.deleteConfirmation("Are you sure you want to delete the selected item(s)?")){
+//                    Database.deleteProduct(item_code);
+//                    clearProductFields();
+//                    refreshProductsTable();
+//                    filterProducts();
+//                    AlertMessage.showSuccessAlert("Spare item(s) successfully deleted!");
+//                }
+//            }else {
+//                AlertMessage.showErrorAlert("Spare item cannot be found!");
+//                clearProductFields();
+//            }
+//        }
     }
 
     public void saveButton() throws Exception {
-        String item_code = itemCode.getText().trim().toUpperCase();
-        String item_name = itemName.getText().trim().toUpperCase();
-        String item_make = itemMake.getText().trim().toUpperCase();
-        String item_model = itemModel.getText().trim().toUpperCase();
-        String item_stock = itemStock.getText().trim();
-        String unit_price = unitPrice.getText().trim();
-        String date_purchased = datePurchased.getText().trim();
-        String item_supplier = itemSupplier.getText().trim().toUpperCase();
-        String item_delivery = itemDelivery.getText().trim().toUpperCase();
+        String plateNumber = truckNumber.getText().trim().toUpperCase();
+        String receiptInvoice = invoice.getText().trim().toUpperCase();
+        String sparePart = spare.getText().trim().toUpperCase();
+        String vehicleMake = truckMake.getText().trim().toUpperCase();
+        String vehicleModel = truckModel.getText().trim();
+        String spareStock = stock.getText().trim();
+        String unitPrice = price.getText().trim().toUpperCase();
+        String date_purchased = purchaseDate.getText().trim();
+        String item_supplier = spareSupplier.getText().trim().toUpperCase();
 
-        if (item_code.isEmpty() && item_name.isEmpty() && item_make.isEmpty() && item_model.isEmpty()
-                && item_stock.isEmpty() && unit_price.isEmpty() && date_purchased.isEmpty() && item_supplier.isEmpty()
-                && item_delivery.isEmpty()){
+        if (plateNumber.isEmpty() && receiptInvoice.isEmpty() && sparePart.isEmpty() && vehicleMake.isEmpty()
+                && vehicleModel.isEmpty() && spareStock.isEmpty() && date_purchased.isEmpty() && item_supplier.isEmpty()
+                && unitPrice.isEmpty()){
             AlertMessage.showErrorAlert("All fields must be filled!");
 
-        } else if (item_code.isEmpty()) {
+        } else if (plateNumber.isEmpty()) {
             AlertMessage.showErrorAlert("Item Code must be filled!");
 
-        } else if (item_name.isEmpty()) {
+        } else if (receiptInvoice.isEmpty()) {
             AlertMessage.showErrorAlert("Item Name must be filled!");
 
-        } else if (item_make.isEmpty()) {
+        } else if (sparePart.isEmpty()) {
             AlertMessage.showErrorAlert("Item Make must be filled!");
 
-        } else if (item_model.isEmpty()) {
+        } else if (vehicleMake.isEmpty()) {
             AlertMessage.showErrorAlert("Item Model must be filled!");
 
-        } else if (item_stock.isEmpty()) {
+        } else if (vehicleModel.isEmpty()) {
             AlertMessage.showErrorAlert("Stock must be filled!");
 
-        } else if (unit_price.isEmpty()) {
+        } else if (spareStock.isEmpty()) {
             AlertMessage.showErrorAlert("Price field must be filled!");
 
         } else if (date_purchased.isEmpty()) {
@@ -386,12 +454,14 @@ public class ProductsController implements Initializable {
         } else if (item_supplier.isEmpty()) {
             AlertMessage.showErrorAlert("Supplier must be filled!");
 
-        } else if (item_delivery.isEmpty()){
+        } else if (unitPrice.isEmpty()){
             AlertMessage.showErrorAlert("Delivery must be filled!");
 
         } else {
-            if (!Database.checkSpareItem(item_code)){
-                int rowsAffected = Database.insertProduct(item_code, item_name, item_make, item_model, item_stock, item_stock, "0", unit_price, date_purchased, item_supplier, item_delivery, cashierID);
+            if (!Database.checkSpareItem(plateNumber)){
+                int total = Integer.parseInt(stock.getText().trim()) * Integer.parseInt(price.getText().trim());
+                String stringTotal = String.valueOf(total);
+                int rowsAffected = Database.insertProduct(plateNumber, receiptInvoice, sparePart, vehicleMake, vehicleModel, spareStock, unitPrice, stringTotal, spareStock, "0", date_purchased, item_supplier, cashierID);
                 if (rowsAffected > 0){
                     clearProductFields();
                     refreshProductsTable();

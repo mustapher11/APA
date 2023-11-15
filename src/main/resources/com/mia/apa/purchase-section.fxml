@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.CheckBox?>
 <VBox fx:id="vbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1150.0" spacing="10.0" style="-fx-background-color: linear-gradient(to right, #EE9CA7, #FFDDE1);" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mia.apa.PurchaseSectionController">
    <Label text="Auto Mobile Spare Parts">
       <font>
@@ -34,6 +35,12 @@
             <Insets left="10.0" right="10.0" />
          </HBox.margin>
       </TextField>
+      <Region HBox.hgrow="ALWAYS" />
+      <CheckBox fx:id="selectAll" text="Select All">
+         <HBox.margin>
+            <Insets top="15.0" right="85.0"/>
+         </HBox.margin>
+      </CheckBox>
    </HBox>
    <TableView fx:id="spareTable" prefHeight="300.0" prefWidth="1080.0">
       <columns>
@@ -46,6 +53,7 @@
          <TableColumn fx:id="stockSold" prefWidth="75.0" text="Stock Sold" />
          <TableColumn fx:id="unit_price" prefWidth="75.0" text="Unit Price" />
          <TableColumn fx:id="supplier" prefWidth="75.0" text="Supplier" />
+         <TableColumn fx:id="action" prefWidth="75.0" text="Select" />
 </columns>
       <VBox.margin>
          <Insets bottom="10.0" left="10.0" right="10.0" />
@@ -212,7 +220,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="generate" layoutX="134.0" layoutY="10.0" mnemonicParsing="false" onAction="#generate" prefHeight="50.0" prefWidth="200.0" text="Generate Receipt">
+      <Button fx:id="generate" layoutX="134.0" layoutY="10.0" mnemonicParsing="false" onAction="#generate" prefHeight="50.0" prefWidth="200.0" text="Generate Report">
          <HBox.margin>
             <Insets />
          </HBox.margin>

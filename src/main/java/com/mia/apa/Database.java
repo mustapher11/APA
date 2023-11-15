@@ -197,43 +197,45 @@ public class Database {
 
     public static ObservableList<SpareItem> fetchSpares() throws Exception {
         ObservableList<SpareItem> spareItems = FXCollections.observableArrayList();
-        query = "SELECT * FROM `items` WHERE 1";
+        query = "SELECT * FROM `spares` WHERE 1";
         Statement statement = createConnection().createStatement();
         ResultSet resultSet = statement.executeQuery(query);
 
         while (resultSet.next()){
-            String code = resultSet.getString("item_code");
-            String name = resultSet.getString("item_name");
+            String vehicle_number = resultSet.getString("vehicle_number");
+            String invoice = resultSet.getString("invoice");
+            String spare = resultSet.getString("spare");
             String make = resultSet.getString("make");
             String model = resultSet.getString("model");
-            String stockPurchased = resultSet.getString("stock_purchased");
-            String stockAvailable = resultSet.getString("stock");
-            String stockSold = resultSet.getString("stock_sold");
-            String unitCost = resultSet.getString("unit_cost");
+            String stock_purchased = resultSet.getString("stock_purchased");
+            String unit_price = resultSet.getString("unit_price");
+            String total = resultSet.getString("total");
+            String stock_available = resultSet.getString("stock_available");
+            String stock_out = resultSet.getString("stock_out");
             String date = resultSet.getString("date");
             String supplier = resultSet.getString("supplier");
-            String delivery = resultSet.getString("delivery");
             String cashier = resultSet.getString("cashier");
 
-            spareItems.add(new SpareItem(code, name, make, model, stockPurchased, stockSold, stockAvailable, "Kshs." + unitCost, date, supplier, delivery, cashier));
+            spareItems.add(new SpareItem(vehicle_number, invoice, spare, make, model, stock_purchased, "Kshs." + unit_price, "Kshs." + total, stock_available, stock_out, date, supplier, cashier));
         }
         return spareItems;
     }
 
-    public static int updateProduct(String code, String name, String make, String model, String stock, String stockPurchased, String unitCost, String date, String supplier, String delivery) throws Exception {
+    public static int updateProduct(String vehicleNumber, String invoice, String name, String make, String model, String stock,  String unitCost, String total, String stockAvailable,String date, String supplier) throws Exception {
         query = "UPDATE `items` SET `item_code`= ?,`item_name`= ?,`make`= ?,`model`= ?, `stock`=?, `stock_purchased`= ?, `unit_cost`= ?,`date`= ?,`supplier`= ?,`delivery`= ? WHERE item_code = ?";
         PreparedStatement preparedStatement = createConnection().prepareStatement(query);
-        preparedStatement.setString(1, code);
-        preparedStatement.setString(2, name);
-        preparedStatement.setString(3, make);
-        preparedStatement.setString(4, model);
-        preparedStatement.setString(5, stock);
-        preparedStatement.setString(6, stockPurchased);
+        preparedStatement.setString(1, vehicleNumber);
+        preparedStatement.setString(2, invoice);
+        preparedStatement.setString(3, name);
+        preparedStatement.setString(4, make);
+        preparedStatement.setString(5, model);
+        preparedStatement.setString(6, stock);
         preparedStatement.setString(7, unitCost);
-        preparedStatement.setString(8, date);
-        preparedStatement.setString(9, supplier);
-        preparedStatement.setString(10, delivery);
-        preparedStatement.setString(11, code);
+        preparedStatement.setString(8, total);
+        preparedStatement.setString(9, stockAvailable);
+        preparedStatement.setString(10, date);
+        preparedStatement.setString(11, supplier);
+        preparedStatement.setString(12, vehicleNumber);
 
         return preparedStatement.executeUpdate();
     }
@@ -245,21 +247,22 @@ public class Database {
         preparedStatement.executeUpdate();
     }
 
-    public static int insertProduct(String code, String name, String make, String model, String stockAvailable, String stockPurchased, String stockSold, String unitCost, String date, String supplier, String delivery, String cashier) throws Exception {
+    public static int insertProduct(String vehicleNumber, String invoice, String name, String make, String model, String stockPurchased, String unitCost, String total, String stockAvailable, String stockOut, String date, String supplier, String cashier) throws Exception {
         query = "INSERT INTO `items`(`item_code`, `item_name`, `make`, `model`, `stock`, `stock_purchased`, `stock_sold`, `unit_cost`, `date`, `supplier`, `delivery`, `cashier`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement preparedStatement = createConnection().prepareStatement(query);
-        preparedStatement.setString(1, code);
-        preparedStatement.setString(2, name);
-        preparedStatement.setString(3, make);
-        preparedStatement.setString(4, model);
-        preparedStatement.setString(5, stockAvailable);
+        preparedStatement.setString(1, vehicleNumber);
+        preparedStatement.setString(2, invoice);
+        preparedStatement.setString(3, name);
+        preparedStatement.setString(4, make);
+        preparedStatement.setString(5, model);
         preparedStatement.setString(6, stockPurchased);
-        preparedStatement.setString(7, stockSold);
-        preparedStatement.setString(8, unitCost);
-        preparedStatement.setString(9, date);
-        preparedStatement.setString(10, supplier);
-        preparedStatement.setString(11, delivery);
-        preparedStatement.setString(12, cashier);
+        preparedStatement.setString(7, unitCost);
+        preparedStatement.setString(8, total);
+        preparedStatement.setString(9, stockAvailable);
+        preparedStatement.setString(10, stockOut);
+        preparedStatement.setString(11, date);
+        preparedStatement.setString(12, supplier);
+        preparedStatement.setString(13, cashier);
 
         return preparedStatement.executeUpdate();
     }
